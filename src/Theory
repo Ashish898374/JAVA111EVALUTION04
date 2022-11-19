@@ -1,0 +1,341 @@
+  QUESTION NO=1.  Create a class Product with the following fields:
+                  ● productName: String
+                  ● productPrice: double
+
+
+         ANS= import java.util.*;
+       public class Main {
+
+           public static void main(String[] args) {
+               Scanner s=new Scanner(System.in);
+               System.out.println("Please Enter How Many Object You Want Enter:");
+               int n=s.nextInt();
+               Product arr[]=new Product[n];
+               for(int i=0;i<n;i++){
+                   Product product=new Product();
+                   System.out.println("Please Enter Product Name:");
+                   product.productName=s.next();
+                   System.out.println("Please Enter Product Price ");
+                   product.productPrice=s.nextDouble();
+                   arr[i]=product;
+               }
+               Set<Product> productSet=new TreeSet<>();
+               for(int i=0;i<n;i++){
+                   productSet.add(arr[i]);
+               }
+               System.out.println(productSet);
+           }
+       }
+
+        class Product implements Comparable<Product> {
+
+           String productName;
+           double productPrice;
+
+           public Product(String productName, double productPrice) {
+               this.productName = productName;
+               this.productPrice = productPrice;
+           }
+
+           public Product() {
+
+           }
+
+           @Override
+           public String toString() {
+               return "Product{" +
+                       "productName='" + productName + '\'' +
+                       ", productPrice=" + productPrice +
+                       '}';
+           }
+
+           @Override
+           public int compareTo(Product o) {
+               if(this.productPrice==o.productPrice){
+                   return 0;
+               }
+               if(this.productPrice>o.productPrice){
+                   return 1;
+               }else{
+                   return -1;
+               }
+           }
+       }
+       OUTPUT,
+       Please Enter How Many Object You Want Enter:
+       2
+       Please Enter Product Name:
+       apna
+       Please Enter Product Price
+       100
+       Please Enter Product Name:
+       timara
+       Please Enter Product Price
+       20
+       [Product{productName='timara', productPrice=20.0}, Product{productName='apna', productPrice=100.0}]
+
+
+        *********************************************************************************************************************************************************************
+
+
+
+     QUESTION NO 2.=Given an arraylist nums, and an integer variable key, write a
+             function to find out how many numbers in the arraylist are smaller
+             than the key. Your function should take nums and key as the input
+             and return an integer as an output.
+ ANS=
+   EXAMPLE;
+          import java.util.*;
+          public class Array {
+
+
+                  public static void main(String[] args) {
+                      Scanner s = new Scanner(System.in);
+                      System.out.println("Please Enter Arraylist Length:");
+                      int n = s.nextInt();
+                      int arr[] = new int[n];
+                      System.out.println("PLease Enter Element of Array:");
+
+                      for (int i = 0; i < n; i++) {
+                          arr[i] = s.nextInt();
+                      }
+                      System.out.println("Please Enter variable key:");
+                      int variablekey=s.nextInt();
+                      Set<Integer> hs = new HashSet<>();
+                      for (int i = 0; i < n; i++) {
+
+                          if (arr[i] <variablekey) {
+                              hs.add(arr[i]);
+                          }
+
+                      }
+                      System.out.println(hs.size());
+                  }
+              }
+
+                ********************************************************************************************************************************
+
+                QUESTION NO=3. ObjectException,
+
+                 ANS= public class staticMethod {
+                          static void fun() {
+                              Object object =null;
+
+                              try {
+                                  System.out.println(object.toString());
+                              }
+                              catch (Exception e) {
+                                  System.out.println("This is the  Exception");
+                              } finally {
+                                  System.out.println("the end");
+                              }
+
+                          }
+
+                          public static void main (String[] args) {
+                              fun();
+                          }
+                      }
+
+                    OUTPUT,
+
+                    This is the  Exception
+                    the end
+
+
+              ArrayException,
+
+
+                          public class ArrayException {
+                              static void fun() {
+                                  int[] array = new int[10];
+                                  try {
+                                      System.out.println(array[11] = 100);
+                                  }
+                                  catch (Exception e) {
+                                      System.out.println("This is   Exception code");
+                                  } finally {
+                                      System.out.println(" end of code ");
+                                  }
+
+                              }
+
+                              public static void main (String[] args) {
+                                  fun();
+                              }
+                          }
+
+                          OUTPUT,
+
+                          This is   Exception code
+                           end of code
+                           ***********************************************************************************************************************************
+
+
+
+
+    QUESTION NO=4.
+          There are five plants in a nursery.
+          a. You need to store the name of each of the plants and their
+          respective prices in a collection.
+          E.g. Name: Cactus, price: 300
+          E.g. name MoneyPlant, price: 200
+          b. Iterate over your collection and print all the plant names and prices.
+
+          EXMAPLE,
+
+              import java.util.*;
+              public class Plants {
+
+                      public static void main(String[] args) {
+                          Map<String,Integer> nameandprice=new HashMap<>();
+
+                          nameandprice.put("cactus",200);
+                          nameandprice.put("moneyplant",400);
+                          nameandprice.put("lotus",2900);
+                          nameandprice.put("sunflower",800);
+                          nameandprice.put("marigold",5200);
+                          System.out.println(nameandprice);
+
+                      }
+
+                  }
+
+
+**********************************************************************************************************************
+
+
+
+QUESTION N0=5. When should you use LinkedList over ArrayList?
+ ANS=(a)
+      ArrayList,
+      1.ArrayList allows big O(1) time complexity (constant time) for read /update mathod,
+     2. Adding or removing elements from ArrayList requires shifting elements,
+     3.Ether to make a new space for the elements or for up the gap thus if freqent insertion  and removals are rewired by your application logic then ArrayList will prefrom poorly time big O(n),
+     4.The size is empty get ,set itertor,and listlterator opretion run constant time if more elements are needed then the capacity of the ArrayList then a new one which is time consuming opretion big O(n),
+     5.To avoid higher cost of resizing opretion we should always assing a appropriate initial capacity to the ArrayList at the time construction;
+
+     LinkedList,
+     1. LinkedList provide constant time of big O(1) methods for insertion and removel using itrators but the method to find the elements have big O(n) time complexity and thus are poor perfroming,
+     2.LinkedList has more memory overhead because if needs two nodes for each elements which point to previes and naxt elements in the LinkedList,
+     3. If you are looking for random access of elements the  ArrayList is the way to go for
+
+      (b).When should you use a Set over a List?
+         ANS= Set;
+             1. The use these collection purely depending on the requirement,
+             2. If the requirement is to have only uniqe collection of value
+             3.  Then Set is your best candidate as any implementation of Set maintain uniqe value only;
+             List;
+             1.If you have requirement that there is a need to maintan the insertion order irrepection of the duplicate then
+             List;
+
+        (c) What is the difference between final and finally. Write the code for the same
+        ANS= final;
+              1. final is keyword modifier which provides restration in java we can final there are three way,
+              2. Once we declear a variable as a fianl we can not perform reassignment
+              3.  it is applicable for variable method class ;
+              4. whenever we declear a method as a fianl it can not be overridden to our extends class
+
+              EXAMPLE,
+                    public class Main {
+                      final int x = 10;
+
+                      public static void main(String[] args) {
+                        Main myObj = new Main();
+                        myObj.x = 25; // will generate an error
+                        System.out.println(myObj.x);
+                      }
+                    }
+
+            finally;
+            1. finally is a block it is execute they exception is handled by or not
+
+            EXAMPLE,
+
+                     public class Main {
+                       public static void main(String[] args) {
+                         try {
+                           int[] myNumbers = {1, 2, 3};
+                           System.out.println(myNumbers[10]);
+                         } catch (Exception e) {
+                           System.out.println("Something went wrong.");
+                         } finally {
+                           System.out.println("The 'try catch' is finished.");
+                         }
+                       }
+                     }
+
+
+
+
+      (d).What is the difference between throw and throws. Write the codefor the same.
+        Ans= Throw,
+             1.Throw keyword is used to Throw an exception object explicity,
+             2. throw keyword always present inside method body;
+             3. We can THrow only one exception at time  Throw is followed by an inside,
+
+             EXAMPLE ;
+
+                public class Final {
+
+
+                    void div(int a, int b){
+                        if(b==0){
+                            throw new ArithmeticException();
+                        }
+                        else {
+                            int c=a/b;
+                            System.out.println(c);
+
+                        }
+                    }
+                    public static void main(String[]args){
+                        Final dm =new Final();
+                        dm.div(10,0);
+
+                    }
+                    }
+
+                  OUTPUT;
+                  Exception in thread "main" java.lang.ArithmeticException
+                  	at Final.div(Final.java:6)
+                  	at Final.main(Final.java:16)
+
+
+
+
+
+             Throws,
+             1. Throws keyword is used to declare an exception as well as by pass the called ,
+             2.Throws keyword always use with method signatnce we can handle multiple exception using Throws keywaord
+             3. Throws  is followed by class,
+
+             EXMAPLE;
+             public class Final {
+
+
+                 void div(int a, int b) throws ArithmeticException{
+                     if(b==0){
+                         throw new ArithmeticException();
+                     }
+                     else {
+                         int c=a/b;
+                         System.out.println(c);
+
+                     }
+                 }
+                 public static void main(String[]args) throws ArithmeticException{
+                     Final dm =new Final();
+                     try {
+                         dm.div(10,0);
+                     }
+                     catch (Exception e){
+                         System.out.println("value of zero");
+                     }
+
+
+                 }
+                 }
+                 OUTPUT,
+
+                           value of zero
